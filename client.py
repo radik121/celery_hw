@@ -2,10 +2,10 @@ import requests
 
 res = requests.post(
     'http://127.0.0.1:5000/advert/',
-    json={'name': 'advert_3',
-          'description': 'description_3',
-          'owner_name': 'owner_3',
-          "email": 'masagytov@image-line.ru'}
+    json={'name': 'advert_1',
+          'description': 'description_1',
+          'owner_name': 'owner_1',
+          "email": '123@line.ru'}
 )
 print(res.text)
 

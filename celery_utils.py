@@ -8,7 +8,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
 # initialize celery app
 def get_celery_app_instance(app):
     celery = Celery(
-        app.import_name,
+        'adverts',
         backend=CELERY_RESULT_BACKEND,
         broker=CELERY_BROKER_URL
     )

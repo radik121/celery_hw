@@ -16,3 +16,9 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
+      
+  smtp:
+    image: reachfive/fake-smtp-server:latest
+    ports:
+      - "1080:1080"
+      - "1025:1025"

@@ -27,7 +27,8 @@ class Adverts(Base):
 
 Base.metadata.create_all(engine)
 
-app = Flask(__name__)
+app = Flask('adverts')
+app.config.from_object('config')
 celery = get_celery_app_instance(app)
 
 mail = Mail(app)
@@ -39,11 +40,11 @@ def send_mail(data):
     """
     with app.app_context():
         msg = Message("Ping!",
-                      sender="radik121@mail.ru",
+                      sender="12345@mail.ru",
                       recipients=data)
         msg.body = f"Technical work on the site!"
         mail.send(msg)
-        return 'Message send'
+        return 'Messages send'
 
 
 class SendMail(MethodView):
@@ -54,11 +55,9 @@ class SendMail(MethodView):
                         'result': task.result})
 
     def post(self):
-        # data = request
         if request.json['submit'] == 'Send':
             data = [user['email'] for user in requests.get('http://127.0.0.1:5000/advert/0').json()]
             task = send_mail.apply_async(args=[data])
-            print(data)
             return jsonify({'task_id': task.id})
 
 
