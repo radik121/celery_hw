@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:13.1
+    ports:
+      - "5432:5432"
+    container_name: postgres_flask
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=flask_hw
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"

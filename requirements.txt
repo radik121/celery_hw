@@ -1,0 +1,8 @@
+Flask
+requests
+docker-compose
+psycopg2-binary
+SQLAlchemy
+celery
+redis
+flask-mail
